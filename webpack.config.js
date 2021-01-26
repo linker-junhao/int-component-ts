@@ -6,7 +6,7 @@ module.exports = env => {
   return {
     mode: 'development',
     entry: {
-      app: './src/main.ts'
+      app: '/src/main.ts'
     },
     devtool: 'inline-source-map',
     devServer: {
@@ -18,22 +18,32 @@ module.exports = env => {
         vue: 'vue/dist/vue.esm-bundler.js'
       },
       mainFiles: ['index'],
-      extensions: [".wasm", ".mjs", ".js", ".jsx", ".ts", ".tsx", ".json"],
+      extensions: [".wasm", ".ts", ".tsx", ".js", ".jsx", ".mjs", ".json"],
     },
     module: {
       rules: [
         {
-          test: /.vue$/,
-          use: 'vue-loader'
+          test: /\.tsx?$/,
+          use: [
+            {
+              loader: 'ts-loader',
+              options: {
+                appendTsSuffixTo: [/\.vue$/],
+              }
+            },
+            {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env'],
+                "plugins": ['@vue/babel-plugin-jsx']
+              }
+            }
+          ],
+          exclude: /node_modules/
         },
         {
-          test: /.ts$/,
-          use: [{
-            loader: 'ts-loader',
-            options: {
-              appendTsSuffixTo: [/.vue$/]
-            }
-          }]
+          test: /.vue$/,
+          use: 'vue-loader'
         }
       ]
     },
