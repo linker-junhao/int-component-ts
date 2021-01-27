@@ -44,6 +44,18 @@ module.exports = env => {
         {
           test: /.vue$/,
           use: 'vue-loader'
+        },
+        {
+          test: /\.css$/i,
+          use: [
+            "style-loader",
+            {
+              loader: "css-loader"
+            },
+            {
+              loader: "postcss-loader"
+            }
+          ],
         }
       ]
     },

@@ -6,7 +6,7 @@ export default defineComponent({
   setup() {
     return () => (
       <div>
-        <div id="nav">
+        <div id="nav" class="text-lg">
           <RouterLink to="/">Home</RouterLink> |
           <RouterLink to="/about">About</RouterLink>
         </div>
