@@ -1,0 +1,7 @@
+.test-text {
+  @apply py-2 px-4 font-semibold rounded-lg shadow-md;
+}
+
+.test-text-green {
+  @apply text-white bg-green-500 hover:bg-green-700;
+}
