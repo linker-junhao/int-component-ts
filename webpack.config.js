@@ -26,16 +26,19 @@ module.exports = (env) => ({
         test: /\.tsx?$/,
         use: [
           {
-            loader: 'ts-loader',
+            loader: 'babel-loader',
             options: {
-              appendTsSuffixTo: [/\.vue$/]
+              presets: [
+                '@babel/preset-env',
+                '@babel/preset-typescript'
+              ],
+              plugins: ['@vue/babel-plugin-jsx']
             }
           },
           {
-            loader: 'babel-loader',
+            loader: 'ts-loader',
             options: {
-              presets: ['@babel/preset-env'],
-              plugins: ['@vue/babel-plugin-jsx']
+              appendTsSuffixTo: [/\.vue$/]
             }
           }
         ],
@@ -59,7 +62,16 @@ module.exports = (env) => ({
       },
       {
         test: /\.less$/i,
-        loader: 'less-loader' // 将 Less 文件编译为 CSS 文件
+        use: [
+          {
+            loader: 'less-loader', // 将 Less 文件编译为 CSS 文件
+            options: {
+              lessOptions: {
+                javascriptEnabled: true
+              }
+            }
+          }
+        ]
       }
     ]
   },

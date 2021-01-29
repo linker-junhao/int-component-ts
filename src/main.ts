@@ -1,11 +1,11 @@
 import { createApp } from 'vue';
 
-import antDesign from 'ant-design-vue'; // 加载 JS
-import 'ant-design-vue/lib/style'; // 加载 CSS
+import Antd from 'ant-design-vue';
 import App from './app';
 import router from './router';
 import './style/index.css';
+import 'ant-design-vue/dist/antd.css';
 
 // import 'ant-design-vue/lib/date-picker/style';         // 加载 LESS
 
-createApp(App).use(router).use(antDesign).mount('#app');
+createApp(App).use(router).use(Antd).mount('#app');
