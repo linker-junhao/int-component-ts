@@ -6,8 +6,12 @@ export default defineComponent({
   name: 'Home',
   setup() {
     return () => (
-      <div class="test-text test-text-green">
-        21234
+      <div>
+        <div class="config-edit">
+        </div>
+        <div class="form-preview">
+
+        </div>
       </div>
     );
   }

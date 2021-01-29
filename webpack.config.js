@@ -56,6 +56,10 @@ module.exports = (env) => ({
             loader: 'postcss-loader'
           }
         ]
+      },
+      {
+        test: /\.less$/i,
+        loader: 'less-loader' // 将 Less 文件编译为 CSS 文件
       }
     ]
   },
