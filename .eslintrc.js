@@ -26,6 +26,7 @@ module.exports = {
     ],
     quotes: ['error', 'single'],
     'import/extensions': 'off',
-    'import/no-unresolved': 'off'
+    'import/no-unresolved': 'off',
+    semi: ['error', 'always', { omitLastInOneLineBlock: true }]
   }
 };
