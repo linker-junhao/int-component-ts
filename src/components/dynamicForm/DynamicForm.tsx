@@ -3,18 +3,20 @@ import {
   defineComponent, h, PropType, reactive, resolveComponent, unref
 } from 'vue';
 import { Form } from 'ant-design-vue';
-import DFomrDefinition, { DFormField } from './DefinitionInterface';
+import DFormDefinition, { DFormField } from './DefinitionInterface';
+import validator from './DefinitionPropValidator';
 
 interface BindData {
   [key: string]: any
 }
-function generateFormItems(defs: DFomrDefinition, data: BindData) {
+function generateFormItems(defs: DFormDefinition, data: BindData) {
   const fileds = unref(defs).fields;
   return fileds.map((field: DFormField) => {
     const fieldKey = field.key;
     const ipt = h(resolveComponent(field.inputType), {
       value: data[fieldKey],
-      onChange: (val: any) => {
+      'onUpdate:value': (val: any) => {
+        console.log(val);
         data[fieldKey] = val;
       }
     });
@@ -31,8 +33,9 @@ export default defineComponent({
   name: 'DynamicForm',
   props: {
     definition: {
-      type: Object as PropType<DFomrDefinition>,
-      required: true
+      type: Object as PropType<DFormDefinition>,
+      required: true,
+      validator
     }
   },
   setup(props) {
@@ -46,8 +49,5 @@ export default defineComponent({
       labelCol: { span: 4 },
       wrapperCol: { span: 4 }
     }, this.inputControls);
-  },
-  mounted() {
-    console.log(this);
   }
 });

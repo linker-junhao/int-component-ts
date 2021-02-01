@@ -4,10 +4,10 @@ interface DFormField {
   label: string
 }
 
-interface DFomrDefinition {
+interface DFormDefinition {
   fields: Array<DFormField>
 }
 
-export { DFormField, DFomrDefinition };
+export { DFormField, DFormDefinition };
 
-export default DFomrDefinition;
+export default DFormDefinition;

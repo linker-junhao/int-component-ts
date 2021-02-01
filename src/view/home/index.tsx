@@ -1,3 +1,4 @@
+import validator from '@/components/dynamicForm/DefinitionPropValidator';
 import DynamicForm from '@/components/dynamicForm/DynamicForm';
 import {
   computed, defineComponent, ref
@@ -11,13 +12,17 @@ export default defineComponent({
     DynamicForm
   },
   setup() {
-    const val = ref('{"fields": []}');
+    const genBasicDef = () => ref('{"fields": []}');
+    const val = genBasicDef();
     const defs = computed(() => {
       let ret;
       try {
         ret = JSON.parse(val.value);
+        if (!validator(ret)) {
+          ret = JSON.parse(genBasicDef().value);
+        }
       } catch (_) {
-        ret = { fields: [] };
+        ret = JSON.parse(genBasicDef().value);
       }
       return ret;
     });
