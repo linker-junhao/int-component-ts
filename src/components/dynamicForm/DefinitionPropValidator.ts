@@ -10,7 +10,7 @@ function validField(field: DFormField) {
     devWarn('inputType required');
     return false;
   }
-  if (!strNotNulUndefEmpty(field.key)) {
+  if (!strNotNulUndefEmpty(field.dataKey)) {
     devWarn('key required');
     return false;
   }

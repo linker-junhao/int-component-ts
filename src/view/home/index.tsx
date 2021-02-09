@@ -1,8 +1,9 @@
 import validator from '@/components/dynamicForm/DefinitionPropValidator';
 import DynamicForm from '@/components/dynamicForm/DynamicForm';
 import {
-  computed, defineComponent, ref
+  defineComponent, ref
 } from 'vue';
+import testDefinition from '@/components/dynamicForm/testDefinition';
 
 import './style.css';
 
@@ -13,30 +14,11 @@ export default defineComponent({
   },
   setup() {
     const genBasicDef = () => ref('{"fields": []}');
-    const val = genBasicDef();
-    const defs = computed(() => {
-      let ret;
-      try {
-        ret = JSON.parse(val.value);
-        if (!validator(ret)) {
-          ret = JSON.parse(genBasicDef().value);
-        }
-      } catch (_) {
-        ret = JSON.parse(genBasicDef().value);
-      }
-      return ret;
-    });
+    validator(testDefinition);
     return () => (
       <div class="grid grid-cols-2 gap-2 p-4 h-screen">
-        <div class="config-edit">
-          <a-textarea
-            v-model={[val.value, 'value']}
-            placeholder="config at here"
-            autoSize={{ minRows: 20, maxRows: 80 }}
-          />
-        </div>
         <div class="form-preview">
-          <dynamic-form definition={defs} />
+          <dynamic-form definition={testDefinition} />
         </div>
       </div>
     );

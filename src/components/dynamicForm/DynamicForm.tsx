@@ -1,30 +1,11 @@
 import {
-  computed,
-  defineComponent, h, PropType, reactive, resolveComponent, unref
+  computed, defineComponent, h, PropType, reactive
 } from 'vue';
 import { Form } from 'ant-design-vue';
-import DFormDefinition, { DFormField } from './DefinitionInterface';
+import DFormDefinition from './DefinitionInterface';
 import validator from './DefinitionPropValidator';
-
-interface BindData {
-  [key: string]: any
-}
-function generateFormItems(defs: DFormDefinition, data: BindData) {
-  const fileds = unref(defs).fields;
-  return fileds.map((field: DFormField) => {
-    const fieldKey = field.key;
-    const ipt = h(resolveComponent(field.inputType), {
-      value: data[fieldKey],
-      'onUpdate:value': (val: any) => {
-        console.log(val);
-        data[fieldKey] = val;
-      }
-    });
-    return h(Form.Item, {
-      label: field.label
-    }, ipt);
-  });
-}
+import globalFormDatas from './FormDataCenter';
+import { generateFormItems, generateFormRules } from './Generator';
 
 /**
  * stage1: 集成校验
@@ -39,15 +20,21 @@ export default defineComponent({
     }
   },
   setup(props) {
+    // 表单绑定的对象
     const data = reactive({});
+    globalFormDatas.setData(props.definition.name, data);
+
     const inputControls = computed(() => generateFormItems(props.definition, data));
-    return { data, inputControls };
+    const validateRules = computed(() => generateFormRules(props.definition));
+
+    return { data, inputControls, validateRules };
   },
   render() {
     return h(Form, {
       model: this.data,
       labelCol: { span: 4 },
-      wrapperCol: { span: 4 }
+      wrapperCol: { span: 4 },
+      rules: this.validateRules
     }, this.inputControls);
   }
 });
