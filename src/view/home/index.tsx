@@ -1,4 +1,4 @@
-import validator from '@/components/dynamicForm/DefinitionPropValidator';
+import definitionValidator from '@/components/dynamicForm/DefinitionPropValidator';
 import DynamicForm from '@/components/dynamicForm/DynamicForm';
 import {
   defineComponent, ref
@@ -14,11 +14,11 @@ export default defineComponent({
   },
   setup() {
     const genBasicDef = () => ref('{"fields": []}');
-    validator(testDefinition);
+    definitionValidator(testDefinition);
     return () => (
       <div class="grid grid-cols-2 gap-2 p-4 h-screen">
         <div class="form-preview">
-          <dynamic-form definition={testDefinition} />
+          <DynamicForm definition={testDefinition} />
         </div>
       </div>
     );

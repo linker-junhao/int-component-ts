@@ -17,7 +17,7 @@ function validField(field: DFormField) {
   return true;
 }
 
-function validator(val: DFormDefinition) {
+function definitionValidator(val: DFormDefinition) {
   if (val.fields instanceof Array) {
     let ret = true;
     val.fields.forEach((f) => {
@@ -29,4 +29,4 @@ function validator(val: DFormDefinition) {
   return false;
 }
 
-export default validator;
+export default definitionValidator;

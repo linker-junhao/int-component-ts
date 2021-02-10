@@ -19,7 +19,9 @@ function generateFormItems(defs: DFormDefinition, data: BindData): Array<VNode> 
     return h(Form.Item, {
       label: field.label,
       name: field.dataKey
-    }, ipt);
+    }, {
+      default: () => ipt
+    });
   });
 }
 

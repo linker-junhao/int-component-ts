@@ -5,7 +5,7 @@ import { Form } from 'ant-design-vue';
 import DFormDefinition from './DefinitionInterface';
 import validator from './DefinitionPropValidator';
 import globalFormDatas from './FormDataCenter';
-import { generateFormItems, generateFormRules } from './Generator';
+import { generateFormItems, generateFormRules } from './DFormPartialGenerator';
 
 /**
  * stage1: 集成校验
@@ -35,6 +35,8 @@ export default defineComponent({
       labelCol: { span: 4 },
       wrapperCol: { span: 4 },
       rules: this.validateRules
-    }, this.inputControls);
+    }, {
+      default: () => this.inputControls
+    });
   }
 });
