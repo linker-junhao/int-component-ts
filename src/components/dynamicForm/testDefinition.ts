@@ -32,5 +32,4 @@ const testDefinition: DFormDefinition = {
     }
   ]
 };
-
 export default testDefinition;
