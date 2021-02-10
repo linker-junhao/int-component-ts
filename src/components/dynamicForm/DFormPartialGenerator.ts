@@ -5,6 +5,7 @@ import {
 import BindData from './BindDataInterface';
 import DFormDefinition, { DFormField } from './DefinitionInterface';
 
+// 生成表单条目
 function generateFormItems(defs: DFormDefinition, data: BindData): Array<VNode> {
   const fileds = unref(defs).fields;
   return fileds.map((field: DFormField, index: number) => {
@@ -25,6 +26,7 @@ function generateFormItems(defs: DFormDefinition, data: BindData): Array<VNode> 
   });
 }
 
+// 生成表单校验规则
 function generateFormRules(defs: DFormDefinition) {
   const rules = {};
   unref(defs).fields.forEach((def: DFormField) => {

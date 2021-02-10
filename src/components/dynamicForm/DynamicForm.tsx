@@ -20,11 +20,16 @@ export default defineComponent({
     }
   },
   setup(props) {
-    // 表单绑定的对象
+    // 表单绑定的数据对象
     const data = reactive({});
+
+    // 将数据对象引用到全局数据中心
     globalFormDatas.setData(props.definition.name, data);
 
+    // 生成表单控件
     const inputControls = computed(() => generateFormItems(props.definition, data));
+
+    // 生成校验规则
     const validateRules = computed(() => generateFormRules(props.definition));
 
     return { data, inputControls, validateRules };

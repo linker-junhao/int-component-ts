@@ -23,8 +23,9 @@ const testDefinition: DFormDefinition = {
         {
           message: 'test',
           trigger: ['change'],
-          validator: (rule, value, callback) => {
+          validator: (rule, value) => {
             console.log(value);
+            return true;
           }
         }
       ]

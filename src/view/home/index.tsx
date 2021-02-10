@@ -13,7 +13,6 @@ export default defineComponent({
     DynamicForm
   },
   setup() {
-    const genBasicDef = () => ref('{"fields": []}');
     definitionValidator(testDefinition);
     return () => (
       <div class="grid grid-cols-2 gap-2 p-4 h-screen">

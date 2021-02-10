@@ -12,6 +12,7 @@ interface FormDataCenterType {
   setData(name: string, data: BindData): FormDataCenterType;
 }
 
+// 数据中心，贯穿全局
 class FormDataCenter implements FormDataCenterType {
   public formDatas: FormDatas;
 

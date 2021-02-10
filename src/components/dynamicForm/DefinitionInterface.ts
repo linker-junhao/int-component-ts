@@ -20,7 +20,7 @@ interface DFormFieldValidator {
   required?: boolean,
   trigger?: Array<string>,
   message?: string,
-  validator?: (rule: any, value: any, callback: (err?: Error) => any) => any
+  validator?: (rule: any, value: any) => boolean|Error|Array<Error>,
   pattern?: RegExp,
   enum?: Array<string>
   len?: number,

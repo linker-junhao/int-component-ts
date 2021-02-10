@@ -1,10 +1,12 @@
 import DFormDefinition, { DFormField } from './DefinitionInterface';
 import devWarn from './utils';
 
+// 字符串判空值
 function strNotNulUndefEmpty(val: string) {
   return val !== '' && val !== null && val !== undefined;
 }
 
+// 校验表单定义数据
 function validField(field: DFormField) {
   if (!strNotNulUndefEmpty(field.inputType)) {
     devWarn('inputType required');
@@ -17,6 +19,7 @@ function validField(field: DFormField) {
   return true;
 }
 
+// 校验
 function definitionValidator(val: DFormDefinition) {
   if (val.fields instanceof Array) {
     let ret = true;
