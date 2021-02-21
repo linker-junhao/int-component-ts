@@ -21,7 +21,7 @@ interface DFormFieldValidator {
   trigger?: Array<string>,
   message?: string,
   validator?: (rule: any, value: any) => boolean|Error|Array<Error>,
-  pattern?: RegExp,
+  pattern?: RegExp | string,
   enum?: Array<string>
   len?: number,
   max?: number,
@@ -44,6 +44,6 @@ interface DFormDefinition {
   form?: {}
 }
 
-export { DFormField, DFormDefinition };
+export { DFormField, DFormDefinition, ValidatorTypeEnum };
 
 export default DFormDefinition;

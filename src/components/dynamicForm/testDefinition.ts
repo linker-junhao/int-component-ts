@@ -1,4 +1,4 @@
-import DFormDefinition from './DefinitionInterface';
+import DFormDefinition, { ValidatorTypeEnum } from './DefinitionInterface';
 
 const testDefinition: DFormDefinition = {
   name: 'test',
@@ -23,10 +23,7 @@ const testDefinition: DFormDefinition = {
         {
           message: 'test',
           trigger: ['change'],
-          validator: (rule, value) => {
-            console.log(value);
-            return true;
-          }
+          pattern: /[a-z]+/
         }
       ]
     }

@@ -9,7 +9,6 @@ declare module '@vue/runtime-core' {
 
 export default {
   install: (app: App<any>) => {
-    console.log(app);
     app.config.globalProperties.$dragDropDataCenter = new DataCenter();
   }
 };

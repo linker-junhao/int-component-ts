@@ -7,6 +7,12 @@ export default defineComponent({
       type: [Object, Number, String, Array],
       required: true
     }
+  },
+  render() {
+    return (
+      <div>
+        {this.itemData}
+      </div>
+    );
   }
-
 });

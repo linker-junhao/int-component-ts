@@ -1,4 +1,7 @@
-import { computed, defineComponent, h } from 'vue';
+import {
+  defineComponent, reactive
+} from 'vue';
+import DropItem from './DropItem';
 
 export default defineComponent({
   name: 'DropList',
@@ -9,27 +12,35 @@ export default defineComponent({
         return () => true;
       }
     },
-    value: {
+    modelValue: {
       type: Array,
       default() {
         return [];
       }
     }
   },
+  emits: ['update:modelValue'],
   render() {
+    const dropItems = this.listData.map((item, idx) => (
+      <DropItem itemData={item} key={idx}/>
+    ));
     return (
       <div class="h-screen">
+        {dropItems}
         { this.$slots?.default?.() }
       </div>
     );
   },
-  setup() {},
+  setup() {
+    const listData: Array<any> = reactive([]);
+    return { listData };
+  },
   mounted() {
     const el = this.$el;
     el.addEventListener('drop', (e: DragEvent) => {
       const data = JSON.parse(JSON.stringify(this.$dragDropDataCenter.getData(e)));
-      console.log(data);
-      this.$emit('update:value', this.value.concat(data));
+      this.listData.push(data);
+      this.$emit('update:modelValue', this.listData);
     });
     el.addEventListener('dragover', (e: DragEvent) => {
       const data = this.$dragDropDataCenter.getData(e);
