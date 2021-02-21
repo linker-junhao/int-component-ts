@@ -1,14 +1,16 @@
 import definitionValidator from '@/components/dynamicForm/DefinitionPropValidator';
 import DynamicForm from '@/components/dynamicForm/DynamicForm';
 import {
-  defineComponent, ref
+  defineComponent, h, reactive
 } from 'vue';
+import { Form } from 'ant-design-vue';
 import testDefinition from '@/components/dynamicForm/testDefinition';
 
 import './style.css';
 import DragList from '@/components/drag-drop/DragList';
 import DragItem from '@/components/drag-drop/DragItem';
 import DropList from '@/components/drag-drop/DropList';
+import { generateFormItems } from '@/components/dynamicForm/DFormPartialGenerator';
 
 export default defineComponent({
   name: 'Home',
@@ -17,14 +19,27 @@ export default defineComponent({
   },
   setup() {
     definitionValidator(testDefinition);
+    const dropListScopedSlot = {
+      item: (props: any) => h('div', JSON.stringify(props.itemData))
+    };
+    const dragItemIpts = generateFormItems(testDefinition.fields);
+    const dragItems = dragItemIpts.map((ipt, idx) => h(DragItem, {
+      data: testDefinition.fields[idx],
+      key: idx
+    }, () => ipt));
+
+    const definition = reactive({
+      name: 'test',
+      fields: []
+    });
     return () => (
       <div class="grid grid-cols-3 gap-2 p-4 h-screen">
-        <DropList/>
+        <DropList v-slots={dropListScopedSlot} v-model={[definition.fields, 'modelValue']}/>
         <DragList>
-          <DragItem data={{}}>123123</DragItem>
+          {dragItems}
         </DragList>
         <div class="form-preview">
-          <DynamicForm definition={testDefinition} />
+          <DynamicForm definition={definition} />
         </div>
       </div>
     );

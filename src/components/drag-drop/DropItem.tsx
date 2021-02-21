@@ -1,4 +1,4 @@
-import { defineComponent } from 'vue';
+import { defineComponent, h } from 'vue';
 
 export default defineComponent({
   name: 'DropItem',
@@ -9,10 +9,6 @@ export default defineComponent({
     }
   },
   render() {
-    return (
-      <div>
-        {this.itemData}
-      </div>
-    );
+    return h('div', this.$slots?.default?.());
   }
 });

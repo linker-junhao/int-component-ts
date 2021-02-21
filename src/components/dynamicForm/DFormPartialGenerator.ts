@@ -1,14 +1,14 @@
 import Form from 'ant-design-vue/lib/form/Form';
 import {
-  h, resolveComponent, unref, VNode
+  h, reactive, resolveComponent, VNode
 } from 'vue';
 import BindData from './BindDataInterface';
-import DFormDefinition, { DFormField } from './DefinitionInterface';
+import { DFormField } from './DefinitionInterface';
 
+const tmpData = reactive({});
 // 生成表单条目
-function generateFormItems(defs: DFormDefinition, data: BindData): Array<VNode> {
-  const fileds = unref(defs).fields;
-  return fileds.map((field: DFormField, index: number) => {
+function generateFormItems(fields: Array<DFormField>, data: BindData = tmpData): Array<VNode> {
+  return fields.map((field: DFormField, index: number) => {
     const { dataKey } = field;
     const ipt = h(resolveComponent(field.inputType), {
       key: `${dataKey}-${index}`,
@@ -27,9 +27,9 @@ function generateFormItems(defs: DFormDefinition, data: BindData): Array<VNode> 
 }
 
 // 生成表单校验规则
-function generateFormRules(defs: DFormDefinition) {
+function generateFormRules(fields: Array<DFormField>) {
   const rules = {};
-  unref(defs).fields.forEach((def: DFormField) => {
+  fields.forEach((def: DFormField) => {
     if (def.validator) {
       Reflect.set(rules, def.dataKey, def.validator);
     }

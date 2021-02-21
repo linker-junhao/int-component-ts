@@ -23,7 +23,7 @@ const testDefinition: DFormDefinition = {
         {
           message: 'test',
           trigger: ['change'],
-          pattern: /[a-z]+/
+          pattern: '/[a-z]+/'
         }
       ]
     }

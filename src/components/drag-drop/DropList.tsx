@@ -1,5 +1,5 @@
 import {
-  defineComponent, reactive
+  defineComponent, h, reactive
 } from 'vue';
 import DropItem from './DropItem';
 
@@ -21,19 +21,21 @@ export default defineComponent({
   },
   emits: ['update:modelValue'],
   render() {
-    const dropItems = this.listData.map((item, idx) => (
-      <DropItem itemData={item} key={idx}/>
-    ));
-    return (
-      <div class="h-screen">
-        {dropItems}
-        { this.$slots?.default?.() }
-      </div>
-    );
+    const dropItems = this.listData.map((item) => {
+      this.itemKey += 1;
+      return h(DropItem, {
+        itemData: item,
+        key: this.itemKey
+      }, () => this.$slots?.item?.({ itemData: item }));
+    });
+    return h('div', {
+      class: 'h-screen'
+    }, dropItems);
   },
   setup() {
     const listData: Array<any> = reactive([]);
-    return { listData };
+    const itemKey = 0;
+    return { listData, itemKey };
   },
   mounted() {
     const el = this.$el;

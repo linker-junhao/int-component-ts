@@ -27,10 +27,10 @@ export default defineComponent({
     globalFormDatas.setData(props.definition.name, data);
 
     // 生成表单控件
-    const inputControls = computed(() => generateFormItems(props.definition, data));
+    const inputControls = computed(() => generateFormItems(props.definition.fields, data));
 
     // 生成校验规则
-    const validateRules = computed(() => generateFormRules(props.definition));
+    const validateRules = computed(() => generateFormRules(props.definition.fields));
 
     return { data, inputControls, validateRules };
   },
