@@ -3,7 +3,6 @@ import DynamicForm from '@/components/dynamicForm/DynamicForm';
 import {
   defineComponent, h, reactive
 } from 'vue';
-import { Form } from 'ant-design-vue';
 import testDefinition from '@/components/dynamicForm/testDefinition';
 
 import './style.css';
