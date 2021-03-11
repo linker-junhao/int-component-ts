@@ -6,7 +6,7 @@ const { VueLoaderPlugin } = require('vue-loader');
 module.exports = (env) => ({
   mode: 'development',
   entry: {
-    app: '/src/main.ts'
+    app: '/example/main.ts'
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -78,7 +78,7 @@ module.exports = (env) => ({
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: './example/public/index.html',
       title: 'int-component',
       url: './'
     })
