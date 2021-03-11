@@ -1,4 +1,4 @@
-import Form from 'ant-design-vue/lib/form/Form';
+import { Form } from 'ant-design-vue';
 import {
   h, reactive, resolveComponent, VNode
 } from 'vue';

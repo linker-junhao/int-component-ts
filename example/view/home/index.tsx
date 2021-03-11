@@ -3,13 +3,13 @@ import DynamicForm from '@/components/dynamicForm/DynamicForm';
 import {
   defineComponent, h, reactive
 } from 'vue';
-import testDefinition from '@/components/dynamicForm/testDefinition';
 
 import './style.css';
 import DragList from '@/components/drag-drop/DragList';
 import DragItem from '@/components/drag-drop/DragItem';
 import DropList from '@/components/drag-drop/DropList';
 import { generateFormItems } from '@/components/dynamicForm/DFormPartialGenerator';
+import testDefinition from '../../testDefinition';
 
 export default defineComponent({
   name: 'Home',
