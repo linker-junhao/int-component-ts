@@ -1,5 +1,5 @@
-import definitionValidator from '@/components/dynamicForm/DefinitionPropValidator';
-import DynamicForm from '@/components/dynamicForm/DynamicForm';
+import definitionValidator from '@/components/dynamic-form/DefinitionPropValidator';
+import DynamicForm from '@/components/dynamic-form/DynamicForm';
 import {
   defineComponent, h, reactive
 } from 'vue';
@@ -8,7 +8,7 @@ import './style.css';
 import DragList from '@/components/drag-drop/DragList';
 import DragItem from '@/components/drag-drop/DragItem';
 import DropList from '@/components/drag-drop/DropList';
-import { generateFormItems } from '@/components/dynamicForm/DFormPartialGenerator';
+import { generateFormItems } from '@/components/dynamic-form/DFormPartialGenerator';
 import testDefinition from '../../testDefinition';
 
 export default defineComponent({
@@ -33,7 +33,7 @@ export default defineComponent({
     });
     return () => (
       <div class="grid grid-cols-3 gap-2 p-4 h-screen">
-        <DropList v-slots={dropListScopedSlot} v-model={[definition.fields, 'modelValue']}/>
+        <DropList v-slots={dropListScopedSlot} v-model={[definition.fields, 'modelValue']} />
         <DragList>
           {dragItems}
         </DragList>

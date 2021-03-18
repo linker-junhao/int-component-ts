@@ -2,8 +2,7 @@ import { Form } from 'ant-design-vue';
 import {
   h, reactive, resolveComponent, VNode
 } from 'vue';
-import BindData from './BindDataInterface';
-import { DFormField } from './DefinitionInterface';
+import { BindData, DFormField } from './type';
 
 const tmpData = reactive({});
 // 生成表单条目

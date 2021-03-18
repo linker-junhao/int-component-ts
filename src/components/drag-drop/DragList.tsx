@@ -1,6 +1,6 @@
 import { defineComponent, provide } from 'vue';
 
-interface DragListProps {
+export interface DragListProps {
   allowDrag: Function,
 }
 

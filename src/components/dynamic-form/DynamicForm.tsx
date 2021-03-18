@@ -2,7 +2,7 @@ import {
   computed, defineComponent, h, PropType, reactive
 } from 'vue';
 import { Form } from 'ant-design-vue';
-import DFormDefinition from './DefinitionInterface';
+import DFormDefinition from './type';
 import validator from './DefinitionPropValidator';
 import globalFormDatas from './FormDataCenter';
 import { generateFormItems, generateFormRules } from './DFormPartialGenerator';

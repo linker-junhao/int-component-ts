@@ -2,9 +2,9 @@ import {
   ComponentPublicInstance,
   computed, defineComponent, h, inject, ref
 } from 'vue';
-import devWarn from '../dynamicForm/utils';
+import devWarn from '../dynamic-form/utils';
 
-interface DragItemProps {
+export interface DragItemProps {
   allowDrag: Function|null,
   data: Object
 }

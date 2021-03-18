@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
-import BindData from './BindDataInterface';
+import { BindData } from './type';
 
 interface FormDatas {
   [key: string]: BindData

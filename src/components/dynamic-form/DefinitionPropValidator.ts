@@ -1,4 +1,4 @@
-import DFormDefinition, { DFormField } from './DefinitionInterface';
+import DFormDefinition, { DFormField } from './type';
 import devWarn from './utils';
 
 // 字符串判空值

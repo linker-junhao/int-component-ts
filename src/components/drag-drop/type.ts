@@ -1,3 +1,5 @@
+import { DragItemProps } from './DragItem';
+import { DragListProps } from './DragList';
 import DataCenter from './DataCenter';
 
 declare module '@vue/runtime-core' {
@@ -5,3 +7,5 @@ declare module '@vue/runtime-core' {
     $dragDropDataCenter: DataCenter
   }
 }
+
+export { DragListProps, DragItemProps };

@@ -1,4 +1,5 @@
-enum ValidatorTypeEnum {
+
+export enum ValidatorTypeEnum {
   string = 'string',
   number = 'number',
   boolean = 'boolean',
@@ -16,7 +17,7 @@ enum ValidatorTypeEnum {
   any = 'any'
 }
 
-interface DFormFieldValidator {
+export interface DFormFieldValidator {
   required?: boolean,
   trigger?: Array<string>,
   message?: string,
@@ -31,19 +32,21 @@ interface DFormFieldValidator {
   whitespace?: boolean
 }
 
-interface DFormField {
+export interface DFormField {
   inputType: string,
   dataKey: string,
   label: string,
   validator?: Array<DFormFieldValidator>
 }
 
-interface DFormDefinition {
+export interface DFormDefinition {
   name: string,
   fields: Array<DFormField>,
   form?: {}
 }
 
-export { DFormField, DFormDefinition, ValidatorTypeEnum };
+export interface BindData {
+  [key: string]: any
+}
 
 export default DFormDefinition;
