@@ -10,14 +10,23 @@ const pkg = require('./package.json');
 const extensions = ['.ts', '.tsx'];
 const resolve = (...args) => path.resolve(...args);
 
-function genSubLibConfig(srcDir, targetDir) {
+function genSubLibConfig(srcDir, targetDir, name) {
   return [
     {
       input: resolve(`${srcDir}/index.ts`),
-      output: {
-        file: resolve(`${targetDir}/index.js`),
-        format: 'es'
-      },
+      output: [
+        {
+          file: resolve(`${targetDir}/index.umd.js`),
+          format: 'umd',
+          name,
+          sourcemap: true
+        },
+        {
+          file: resolve(`${targetDir}/index.esm.js`),
+          format: 'esm',
+          sourcemap: true
+        }
+      ],
       plugins: [
         nodeResolve({
           customResolveOptions: {
@@ -49,8 +58,8 @@ function genSubLibConfig(srcDir, targetDir) {
 }
 
 const config = [
-  ...genSubLibConfig('./src/components/drag-drop', './lib/drag-drop'),
-  ...genSubLibConfig('./src/components/dynamic-form', './lib/dynamic-form')
+  ...genSubLibConfig('./src/components/drag-drop', './lib/drag-drop', 'drag-drop'),
+  ...genSubLibConfig('./src/components/dynamic-form', './lib/dynamic-form', 'dynamic-form')
 ];
 
 export default config;
