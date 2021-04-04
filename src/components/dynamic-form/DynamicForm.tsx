@@ -2,21 +2,21 @@ import {
   computed, defineComponent, h, PropType, reactive
 } from 'vue';
 import { Form } from 'ant-design-vue';
-import DFormDefinition from './type';
-import validator from './DefinitionPropValidator';
-import globalFormDatas from './FormDataCenter';
+import { DFormDefinition } from './types';
+import { definitionValidator } from './DefinitionPropValidator';
+import { globalFormDatas } from './FormDataCenter';
 import { generateFormItems, generateFormRules } from './DFormPartialGenerator';
 
 /**
  * stage1: 集成校验
  */
-export default defineComponent({
+const DynamicForm = defineComponent({
   name: 'DynamicForm',
   props: {
     definition: {
       type: Object as PropType<DFormDefinition>,
       required: true,
-      validator
+      validator: definitionValidator
     }
   },
   setup(props) {
@@ -45,3 +45,5 @@ export default defineComponent({
     });
   }
 });
+
+export default DynamicForm;

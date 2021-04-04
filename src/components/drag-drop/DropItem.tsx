@@ -1,6 +1,7 @@
 import { defineComponent, h } from 'vue';
 
-export default defineComponent({
+// eslint-disable-next-line import/prefer-default-export
+export const DropItem = defineComponent({
   name: 'DropItem',
   props: {
     itemData: {

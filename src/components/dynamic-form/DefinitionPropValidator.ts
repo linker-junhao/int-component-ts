@@ -1,5 +1,5 @@
-import DFormDefinition, { DFormField } from './type';
-import devWarn from './utils';
+import { DFormDefinition, DFormField } from './types';
+import { devWarn } from './utils';
 
 // 字符串判空值
 function strNotNulUndefEmpty(val: string) {
@@ -32,4 +32,8 @@ function definitionValidator(val: DFormDefinition) {
   return false;
 }
 
-export default definitionValidator;
+export {
+  definitionValidator,
+  strNotNulUndefEmpty,
+  validField
+};

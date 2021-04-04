@@ -1,14 +1,11 @@
-import definitionValidator from '@/components/dynamic-form/DefinitionPropValidator';
-import DynamicForm from '@/components/dynamic-form/DynamicForm';
 import {
   defineComponent, h, reactive
 } from 'vue';
 
 import './style.css';
-import DragList from '@/components/drag-drop/DragList';
-import DragItem from '@/components/drag-drop/DragItem';
-import DropList from '@/components/drag-drop/DropList';
-import { generateFormItems } from '@/components/dynamic-form/DFormPartialGenerator';
+import DropList, { DragItem, DragList } from '../../../lib/drag-drop';
+
+import DynamicForm, { generateFormItems, definitionValidator } from '../../../lib/dynamic-form';
 import testDefinition from '../../testDefinition';
 
 export default defineComponent({
@@ -22,7 +19,7 @@ export default defineComponent({
       item: (props: any) => h('div', JSON.stringify(props.itemData))
     };
     const dragItemIpts = generateFormItems(testDefinition.fields);
-    const dragItems = dragItemIpts.map((ipt, idx) => h(DragItem, {
+    const dragItems = dragItemIpts.map((ipt: any, idx: number) => h(DragItem, {
       data: testDefinition.fields[idx],
       key: idx
     }, () => ipt));

@@ -16,13 +16,7 @@ function genSubLibConfig(srcDir, targetDir, name) {
       input: resolve(`${srcDir}/index.ts`),
       output: [
         {
-          file: resolve(`${targetDir}/index.umd.js`),
-          format: 'umd',
-          name,
-          sourcemap: true
-        },
-        {
-          file: resolve(`${targetDir}/index.esm.js`),
+          file: resolve(`${targetDir}/index.js`),
           format: 'esm',
           sourcemap: true
         }
@@ -45,9 +39,9 @@ function genSubLibConfig(srcDir, targetDir, name) {
     {
       // 生成 .d.ts 类型声明文件
       // './src/components/drag-drop/index.ts'
-      input: resolve(`${srcDir}/type.ts`),
+      input: resolve(`${srcDir}/index.ts`),
       output: {
-        file: resolve(`${targetDir}/type.d.ts`),
+        file: resolve(`${targetDir}/index.d.ts`),
         format: 'es'
       },
       plugins: [dts({
@@ -59,7 +53,8 @@ function genSubLibConfig(srcDir, targetDir, name) {
 
 const config = [
   ...genSubLibConfig('./src/components/drag-drop', './lib/drag-drop', 'drag-drop'),
-  ...genSubLibConfig('./src/components/dynamic-form', './lib/dynamic-form', 'dynamic-form')
+  ...genSubLibConfig('./src/components/dynamic-form', './lib/dynamic-form', 'dynamic-form'),
+  ...genSubLibConfig('./src/components/hello-world', './lib/hello-world', 'hello-world')
 ];
 
 export default config;

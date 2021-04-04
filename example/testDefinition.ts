@@ -1,4 +1,4 @@
-import DFormDefinition, { ValidatorTypeEnum } from '@/components/dynamic-form/type';
+import { DFormDefinition } from '../lib/dynamic-form/index.d';
 
 const testDefinition: DFormDefinition = {
   name: 'test',

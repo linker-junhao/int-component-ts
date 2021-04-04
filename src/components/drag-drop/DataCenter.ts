@@ -1,5 +1,3 @@
-import DragItem from './DragItem';
-
 class DataCenter {
   private dragList = new Map();
 
@@ -20,4 +18,5 @@ class DataCenter {
   }
 }
 
-export default DataCenter;
+// eslint-disable-next-line import/prefer-default-export
+export { DataCenter };

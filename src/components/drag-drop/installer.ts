@@ -1,7 +1,8 @@
 import { App } from 'vue';
-import DataCenter from './DataCenter';
+import { DataCenter } from './DataCenter';
 
-export default {
+// eslint-disable-next-line import/prefer-default-export
+export const installer = {
   install: (app: App<any>) => {
     app.config.globalProperties.$dragDropDataCenter = new DataCenter();
   }

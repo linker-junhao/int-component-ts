@@ -48,5 +48,3 @@ export interface DFormDefinition {
 export interface BindData {
   [key: string]: any
 }
-
-export default DFormDefinition;

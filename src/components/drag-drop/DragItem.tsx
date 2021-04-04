@@ -2,10 +2,10 @@ import {
   ComponentPublicInstance,
   computed, defineComponent, h, inject, ref
 } from 'vue';
-import devWarn from '../dynamic-form/utils';
+import { devWarn } from '../dynamic-form/utils';
 
 export interface DragItemProps {
-  allowDrag: Function|null,
+  allowDrag: Function | null,
   data: Object
 }
 
@@ -13,7 +13,7 @@ const DragItemCommonData = {
   uid: 0
 };
 
-const DragItem = defineComponent({
+export const DragItem = defineComponent({
   name: 'DragItem',
   props: {
     allowDrag: {
@@ -28,7 +28,7 @@ const DragItem = defineComponent({
     }
   },
   setup(props: DragItemProps) {
-    const ijctAllowDrag: Function|undefined = inject('allowDrag');
+    const ijctAllowDrag: Function | undefined = inject('allowDrag');
 
     // 优先使用本身的检测，没有再使用provide的可否拖拽检测，
     const draggable = computed(() => {
@@ -59,5 +59,3 @@ const DragItem = defineComponent({
     });
   }
 });
-
-export default DragItem;

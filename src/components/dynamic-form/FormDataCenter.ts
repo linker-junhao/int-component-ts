@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
-import { BindData } from './type';
+import { BindData } from './types';
 
 interface FormDatas {
   [key: string]: BindData
@@ -30,8 +30,6 @@ class FormDataCenter implements FormDataCenterType {
   }
 }
 
-export { FormDataCenter };
-
 const globalFormDatas = new FormDataCenter();
 
-export default globalFormDatas;
+export { FormDataCenter, globalFormDatas };

@@ -1,4 +1,9 @@
-export * as DynamicForm from './DynamicForm';
-export * as definitionValidator from './DefinitionPropValidator';
-export { generateFormItems, generateFormRules } from './DFormPartialGenerator';
-export { FormDataCenter } from './FormDataCenter';
+import DynamicForm from './DynamicForm';
+
+export * from './types';
+export * from './utils';
+export * from './FormDataCenter';
+export * from './DFormPartialGenerator';
+export * from './DefinitionPropValidator';
+
+export default DynamicForm;

@@ -4,7 +4,7 @@ export interface DragListProps {
   allowDrag: Function,
 }
 
-export default defineComponent({
+export const DragList = defineComponent({
   name: 'DragList',
   props: {
     allowDrag: {

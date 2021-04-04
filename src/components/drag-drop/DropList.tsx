@@ -1,7 +1,7 @@
 import {
   defineComponent, h, reactive
 } from 'vue';
-import DropItem from './DropItem';
+import { DropItem } from './DropItem';
 
 export default defineComponent({
   name: 'DropList',

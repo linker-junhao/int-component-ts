@@ -18,7 +18,7 @@ module.exports = (env) => ({
       vue: 'vue/dist/vue.esm-bundler.js'
     },
     mainFiles: ['index'],
-    extensions: ['.wasm', '.ts', '.tsx', '.js', '.jsx', '.mjs', '.json']
+    extensions: ['.wasm', '.ts', '.tsx', '.js', '.jsx', '.esm.js', '.umd.js', '.mjs.js', '.json']
   },
   module: {
     rules: [
