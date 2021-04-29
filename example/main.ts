@@ -1,9 +1,10 @@
 import { createApp } from 'vue';
 
 import Antd from 'ant-design-vue';
-import { installer as dragDropInstaller } from '../lib/drag-drop';
+import { installer as dragDropInstaller } from '../package/drag-drop';
 import App from './app';
 import router from './router';
+import './mockjs';
 import './style/index.css';
 import 'ant-design-vue/dist/antd.css';
 

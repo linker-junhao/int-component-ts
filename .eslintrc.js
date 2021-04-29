@@ -30,6 +30,7 @@ module.exports = {
     semi: ['error', 'always', { omitLastInOneLineBlock: true }],
     'no-unused-vars': 'off',
     'no-shadow': 'off',
-    '@typescript-eslint/no-shadow': ['error']
+    '@typescript-eslint/no-shadow': ['error'],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }]
   }
 };

@@ -4,6 +4,10 @@ const routes = [
   {
     path: '/',
     component: () => import('../view/home/index')
+  },
+  {
+    path: '/proxy-config',
+    component: () => import('../view/proxy-config/index')
   }
 ];
 

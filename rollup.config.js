@@ -52,9 +52,8 @@ function genSubLibConfig(srcDir, targetDir, name) {
 }
 
 const config = [
-  ...genSubLibConfig('./src/components/drag-drop', './lib/drag-drop', 'drag-drop'),
-  ...genSubLibConfig('./src/components/dynamic-form', './lib/dynamic-form', 'dynamic-form'),
-  ...genSubLibConfig('./src/components/hello-world', './lib/hello-world', 'hello-world')
+  ...genSubLibConfig('./src/components/drag-drop', './package/drag-drop', 'drag-drop'),
+  ...genSubLibConfig('./src/components/dynamic-form', './package/dynamic-form', 'dynamic-form')
 ];
 
 export default config;
