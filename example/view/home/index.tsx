@@ -3,9 +3,9 @@ import {
 } from 'vue';
 
 import './style.css';
-import DropList, { DragItem, DragList } from '../../../package/drag-drop';
+import DropList, { DragItem, DragList } from '../../../components/drag-drop/dist';
 
-import DynamicForm, { generateFormItems, definitionValidator } from '../../../package/dynamic-form';
+import DynamicForm, { generateFormItems, definitionValidator } from '../../../components/dynamic-form/dist';
 import testDefinition from '../../testDefinition';
 
 export default defineComponent({

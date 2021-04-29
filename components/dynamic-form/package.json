@@ -1,0 +1,26 @@
+{
+  "name": "@int-component/dynamic-form",
+  "version": "1.0.0",
+  "description": "generate dynamic form with a json config",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linkerGitHub/int-component-ts.git",
+    "directory": "components/dynamic-form"
+  },
+  "keywords": [
+    "form",
+    "antd-vue",
+    "dynamic",
+    "form"
+  ],
+  "author": "Linker",
+  "license": "MIT",
+  "peerDependencies": {
+    "vue": "^3.0.7",
+    "ant-design-vue": "^2.0.1"
+  }
+}

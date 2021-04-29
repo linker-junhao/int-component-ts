@@ -1,0 +1,26 @@
+{
+  "name": "@int-component/drag-drop",
+  "version": "1.0.0",
+  "description": "a drag drop warpper based on vue.js version 3",
+  "main": "dist/index.js",
+  "files": ["dist/**"],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linkerGitHub/int-component-ts.git",
+    "directory": "components/drag-drop"
+  },
+  "keywords": [
+    "drag",
+    "drop",
+    "vue3",
+    "ts"
+  ],
+  "author": "Linker",
+  "license": "MIT",
+  "peerDependencies": {
+    "vue": "^3.0.7"
+  }
+}

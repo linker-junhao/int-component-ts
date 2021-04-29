@@ -21,7 +21,7 @@
       "dom.iterable",
       "scripthost"
     ],
-    "typeRoots": ["./src/components/drag-drop"]
+    "typeRoots": ["components/drag-drop"]
   },
   "include": [
     "./src/**/*.ts",
