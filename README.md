@@ -8,6 +8,7 @@ ok, that's all. rest of this readme is the usage doc of the component that I pub
 ## drag-drop
 ```jsx
   const dropListScopedSlot = {
+    // slot item used for the data item render
     item: (props: any) => h('div', JSON.stringify(props.itemData))
   };
 
@@ -30,3 +31,4 @@ ok, that's all. rest of this readme is the usage doc of the component that I pub
     );
   }
 ```
+I used another experiment component DynamicForm, just ignore it, It's just a handy use for preview example.
