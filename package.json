@@ -8,10 +8,8 @@
     "build": "webpack",
     "watch": "webpack --watch",
     "start": "webpack serve",
-    "rollup-build": "rollup -c ./rollup.config.js",
-    "vite:dev": "vite",
-    "vite:build": "vue-tsc --noEmit && vite build",
-    "vite:serve": "vite preview"
+    "build:components": "rollup -c ./rollup.config.js",
+    "vite:dev-example": "vite"
   },
   "author": "Linker",
   "license": "MIT",
