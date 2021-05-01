@@ -1,5 +1,5 @@
 # drag-drop
-```jsx
+```js
   import DropList, { DragItem, DragList } from '@int-component/drag-drop';
   const dropListScopedSlot = {
     // slot item used for the data item render
