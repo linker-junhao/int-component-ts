@@ -11,4 +11,5 @@ ok, that's all. rest of this readme is the usage doc of the component that I pub
 ### [drag-drop](https://github.com/linkerGitHub/int-component-ts/blob/master/components/drag-drop/README.md)
 
 ## other
-run example with command `npm run vite:dev-example`
+* RUN EXAMPLE: run example with command `npm run vite:dev-example`
+* SLOW DOWNLOADING SPEED: I used `.npmrc` to get faster packaged download speed. if you encountered slow downloading speed, you can delete the file or change the config in the file.
