@@ -1,43 +1,25 @@
 import {
   defineComponent, h, reactive
 } from 'vue';
+import { RouterLink } from 'vue-router';
 
 import './style.css';
-import DropList, { DragItem, DragList } from '../../../components/drag-drop/dist';
-
-import DynamicForm, { generateFormItems, definitionValidator } from '../../../components/dynamic-form/dist';
-import testDefinition from '../../testDefinition';
 
 export default defineComponent({
   name: 'Home',
-  components: {
-    DynamicForm
-  },
-  setup() {
-    definitionValidator(testDefinition);
-    const dropListScopedSlot = {
-      item: (props: any) => h('div', JSON.stringify(props.itemData))
-    };
-    const dragItemIpts = generateFormItems(testDefinition.fields);
-    const dragItems = dragItemIpts.map((ipt: any, idx: number) => h(DragItem, {
-      data: testDefinition.fields[idx],
-      key: idx
-    }, () => ipt));
-
-    const definition = reactive({
-      name: 'test',
-      fields: []
-    });
-    return () => (
-      <div class="grid grid-cols-3 gap-2 p-4 h-screen">
-        <DropList v-slots={dropListScopedSlot} v-model={[definition.fields, 'modelValue']} />
-        <DragList>
-          {dragItems}
-        </DragList>
-        <div class="form-preview">
-          <DynamicForm definition={definition} />
-        </div>
-      </div>
-    );
+  render() {
+    return <div class="w-3/4 m-auto">
+      <h1>
+        int-components
+      </h1>
+      <ul>
+        <li class="flex-row flex justify-between items-baseline">
+          <RouterLink to={{ path: '/drag-drop' }}>
+            drag-drop
+          </RouterLink>
+          <span class="text-gray-400 text-base">source-code: /example/view/drag-drop</span>
+        </li>
+      </ul>
+    </div>;
   }
 });

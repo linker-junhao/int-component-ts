@@ -6,6 +6,10 @@ const routes = [
     component: () => import('../view/home/index')
   },
   {
+    path: '/drag-drop',
+    component: () => import('../view/drag-drop')
+  },
+  {
     path: '/proxy-config',
     component: () => import('../view/proxy-config/index')
   }

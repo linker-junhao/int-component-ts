@@ -60,6 +60,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@int-component/drag-drop": "^1.0.1",
     "ant-design-vue": "^2.0.1",
     "vue": "^3.0.7",
     "vue-router": "^4.0.5",
