@@ -22,13 +22,19 @@ export default defineComponent({
     };
   },
   render() {
-    return (<div>
-      <Form>
+    return (<div class="grid grid-cols-3 gap-4">
+      {/* <Form>
         <Form.Item label="nginx配置文件路径">
           <Input v-model={this.baseConfig.configFilePath}/>
         </Form.Item>
       </Form>
-      <LocationConfig/>
+      <LocationConfig/> */}
+      <div>
+        <div></div>
+      </div>
+      <div class="col-span-2">
+
+      </div>
     </div>);
   }
 });

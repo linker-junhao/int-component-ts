@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 
 import Antd from 'ant-design-vue';
-import { installer as dragDropInstaller } from '../components/drag-drop/dist';
+import { installer as dragDropInstaller } from '@int-component/drag-drop';
 import App from './app';
 import router from './router';
 import './mockjs';
