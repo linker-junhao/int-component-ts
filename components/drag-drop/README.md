@@ -1,5 +1,10 @@
 # drag-drop
 ```js
+  // vue install
+  import { installer as dragDropInstaller } from '@int-component/drag-drop';
+  createApp(App).use(dragDropInstaller).mount('#app');
+
+  // use
   import DropList, { DragItem, DragList } from '@int-component/drag-drop';
   const dropListScopedSlot = {
     // slot item used for the data item render
