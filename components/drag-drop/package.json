@@ -1,6 +1,6 @@
 {
   "name": "@int-component/drag-drop",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "a drag drop warpper based on vue.js version 3",
   "main": "dist/index.js",
   "files": [
