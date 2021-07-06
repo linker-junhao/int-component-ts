@@ -5,25 +5,43 @@ import {
 import './style.css';
 import DropList, { DragItem, DragList } from '../../../components/drag-drop/index';
 
-import DynamicForm, { generateFormItems, definitionValidator } from '../../../components/dynamic-form/index';
-import testDefinition from '../../testDefinition';
-
 export default defineComponent({
   name: 'DragDrop',
-  components: {
-    DynamicForm
-  },
   setup() {
-    definitionValidator(testDefinition);
     const dropListScopedSlot = {
       item: (props: any) => h('div', JSON.stringify(props.itemData))
     };
-    const dragItemIpts = generateFormItems(testDefinition.fields);
-    const dragItems = dragItemIpts.map((ipt: any, idx: number) => h(DragItem, {
+    const dragItemIpts = [
+      {
+        inputType: 'AInput',
+        dataKey: 'test',
+        label: 'test',
+        validator: [
+          {
+            required: true,
+            message: 'test -- required',
+            trigger: ['change']
+          }
+        ]
+      },
+      {
+        inputType: 'AInput',
+        dataKey: 'test1',
+        label: 'test1',
+        validator: [
+          {
+            message: 'test',
+            trigger: ['change'],
+            pattern: '/[a-z]+/'
+          }
+        ]
+      }
+    ];
+    const dragItems = dragItemIpts.map((data, idx: number) => h(DragItem, {
       allowDrag: () => idx === 0,
-      data: testDefinition.fields[idx],
+      data,
       key: idx
-    }, () => ipt));
+    }, () => <div>{data.dataKey}</div>));
 
     const definition = reactive({
       name: 'test',
@@ -35,9 +53,6 @@ export default defineComponent({
         <DragList>
           {dragItems}
         </DragList>
-        <div class="form-preview">
-          <DynamicForm definition={definition} />
-        </div>
       </div>
     );
   }
