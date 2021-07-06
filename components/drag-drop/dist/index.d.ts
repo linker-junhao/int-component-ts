@@ -28,6 +28,8 @@ declare const installer: {
 declare class DataCenter {
     private dragList;
     private TransferDataName;
+    static instance: DataCenter | null;
+    constructor();
     getData(e: DragEvent): any;
     setData(e: DragEvent, dragItem: any): void;
 }

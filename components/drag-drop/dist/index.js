@@ -1,5 +1,71 @@
 import { defineComponent, h, reactive, inject, computed, ref, provide, createVNode } from 'vue';
 
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+var DataCenter = /*#__PURE__*/function () {
+  function DataCenter() {
+    _classCallCheck(this, DataCenter);
+
+    this.dragList = new Map();
+    this.TransferDataName = 'id';
+
+    if (!DataCenter.instance) {
+      DataCenter.instance = this;
+    }
+
+    return DataCenter.instance;
+  }
+
+  _createClass(DataCenter, [{
+    key: "getData",
+    value: function getData(e) {
+      var _e$dataTransfer;
+
+      var id = (_e$dataTransfer = e.dataTransfer) === null || _e$dataTransfer === void 0 ? void 0 : _e$dataTransfer.getData(this.TransferDataName);
+
+      if (id) {
+        return this.dragList.get(id);
+      }
+
+      throw new Error('outside drap event is not acceptable');
+    }
+  }, {
+    key: "setData",
+    value: function setData(e, dragItem) {
+      var _e$dataTransfer2;
+
+      var settledId = dragItem.uid.toString();
+      this.dragList.set(settledId, dragItem.data);
+      (_e$dataTransfer2 = e.dataTransfer) === null || _e$dataTransfer2 === void 0 ? void 0 : _e$dataTransfer2.setData(this.TransferDataName, settledId);
+    }
+  }]);
+
+  return DataCenter;
+}();
+
+DataCenter.instance = null;
+var dataCenter = new DataCenter(); // eslint-disable-next-line import/prefer-default-export
+
 var DropItem = defineComponent({
   name: 'DropItem',
   props: {
@@ -66,92 +132,35 @@ var DropList = defineComponent({
     var _this2 = this;
 
     var el = this.$el;
+    el.addEventListener('dragover', function (e) {
+      try {
+        var data = dataCenter.getData(e);
+
+        var droppable = _this2.allowDrop(data);
+
+        if (droppable) {
+          e.preventDefault();
+        }
+      } catch (err) {
+        console.warn(err);
+        e.preventDefault();
+      }
+    });
     el.addEventListener('drop', function (e) {
-      var data = JSON.parse(JSON.stringify(_this2.$dragDropDataCenter.getData(e)));
+      var data = dataCenter.getData(e);
 
       _this2.listData.push(data);
 
       _this2.$emit('update:modelValue', _this2.listData);
     });
-    el.addEventListener('dragover', function (e) {
-      var data = _this2.$dragDropDataCenter.getData(e);
-
-      var droppable = _this2.allowDrop(data);
-
-      if (droppable) {
-        e.preventDefault();
-      }
-    });
   }
 });
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-var DataCenter = /*#__PURE__*/function () {
-  function DataCenter() {
-    _classCallCheck(this, DataCenter);
-
-    this.dragList = new Map();
-    this.TransferDataName = 'id';
-  }
-
-  _createClass(DataCenter, [{
-    key: "getData",
-    value: function getData(e) {
-      var _e$dataTransfer;
-
-      var id = (_e$dataTransfer = e.dataTransfer) === null || _e$dataTransfer === void 0 ? void 0 : _e$dataTransfer.getData(this.TransferDataName);
-
-      if (id) {
-        return this.dragList.get(id);
-      }
-
-      return null;
-    }
-  }, {
-    key: "setData",
-    value: function setData(e, dragItem) {
-      var _e$dataTransfer2;
-
-      var settledId = dragItem.uid.toString();
-      this.dragList.set(settledId, dragItem.data);
-      (_e$dataTransfer2 = e.dataTransfer) === null || _e$dataTransfer2 === void 0 ? void 0 : _e$dataTransfer2.setData(this.TransferDataName, settledId);
-    }
-  }]);
-
-  return DataCenter;
-}(); // eslint-disable-next-line import/prefer-default-export
 
 var installer = {
   install: function install(app) {
     app.config.globalProperties.$dragDropDataCenter = new DataCenter();
   }
 };
-
-// eslint-disable-next-line import/prefer-default-export
-function devWarn(msg) {
-  console.warn("%c".concat(msg), 'color: green; background-color: orange;');
-}
 
 var DragItemCommonData = {
   uid: 0
@@ -198,11 +207,10 @@ var DragItem = defineComponent({
 
     this.$el.addEventListener('dragstart', function (e) {
       if (!e.dataTransfer) {
-        devWarn('浏览器不支持dataTransfer');
+        console.warn('your browser not support dataTransfer');
       }
 
-      _this.$dragDropDataCenter.setData(e, _this);
-
+      dataCenter.setData(e, _this);
       e.stopPropagation();
     });
   }

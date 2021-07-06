@@ -3,9 +3,9 @@ import {
 } from 'vue';
 
 import './style.css';
-import DropList, { DragItem, DragList } from '@int-component/drag-drop';
+import DropList, { DragItem, DragList } from '../../../components/drag-drop/index';
 
-import DynamicForm, { generateFormItems, definitionValidator } from '../../../components/dynamic-form/dist';
+import DynamicForm, { generateFormItems, definitionValidator } from '../../../components/dynamic-form/index';
 import testDefinition from '../../testDefinition';
 
 export default defineComponent({
@@ -20,6 +20,7 @@ export default defineComponent({
     };
     const dragItemIpts = generateFormItems(testDefinition.fields);
     const dragItems = dragItemIpts.map((ipt: any, idx: number) => h(DragItem, {
+      allowDrag: () => idx === 0,
       data: testDefinition.fields[idx],
       key: idx
     }, () => ipt));

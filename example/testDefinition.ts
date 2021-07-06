@@ -1,4 +1,4 @@
-import { DFormDefinition } from '../components/dynamic-form/dist/index.d';
+import { DFormDefinition } from '../components/dynamic-form';
 
 const testDefinition: DFormDefinition = {
   name: 'test',

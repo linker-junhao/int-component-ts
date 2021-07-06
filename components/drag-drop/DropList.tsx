@@ -1,6 +1,7 @@
 import {
   defineComponent, h, reactive
 } from 'vue';
+import dataCenter from './DataCenter';
 import { DropItem } from './DropItem';
 
 export default defineComponent({
@@ -39,17 +40,23 @@ export default defineComponent({
   },
   mounted() {
     const el = this.$el;
-    el.addEventListener('drop', (e: DragEvent) => {
-      const data = JSON.parse(JSON.stringify(this.$dragDropDataCenter.getData(e)));
-      this.listData.push(data);
-      this.$emit('update:modelValue', this.listData);
-    });
     el.addEventListener('dragover', (e: DragEvent) => {
-      const data = this.$dragDropDataCenter.getData(e);
-      const droppable = this.allowDrop(data);
-      if (droppable) {
+      try {
+        const data = dataCenter.getData(e);
+        const droppable = this.allowDrop(data);
+        if (droppable) {
+          e.preventDefault();
+        }
+      } catch (err: any) {
+        console.warn(err);
         e.preventDefault();
       }
+    });
+
+    el.addEventListener('drop', (e: DragEvent) => {
+      const data = dataCenter.getData(e);
+      this.listData.push(data);
+      this.$emit('update:modelValue', this.listData);
     });
   }
 });

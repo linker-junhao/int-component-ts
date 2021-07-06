@@ -13,6 +13,7 @@ const resolve = (...args) => path.resolve(...args);
 function genSubLibConfig(srcDir, targetDir, name) {
   return [
     {
+      exclude: './example',
       input: resolve(`${srcDir}/index.ts`),
       output: [
         {
@@ -37,6 +38,7 @@ function genSubLibConfig(srcDir, targetDir, name) {
       external: ['ant-design-vue', 'vue']
     },
     {
+      exclude: './example',
       // 生成 .d.ts 类型声明文件
       // './src/components/drag-drop/index.ts'
       input: resolve(`${srcDir}/index.ts`),

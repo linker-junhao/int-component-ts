@@ -2,7 +2,7 @@ import {
   ComponentPublicInstance,
   computed, defineComponent, h, inject, ref
 } from 'vue';
-import { devWarn } from '../dynamic-form/utils';
+import dataCenter from './DataCenter';
 
 export interface DragItemProps {
   allowDrag: Function | null,
@@ -52,9 +52,9 @@ export const DragItem = defineComponent({
   mounted() {
     this.$el.addEventListener('dragstart', (e: DragEvent) => {
       if (!e.dataTransfer) {
-        devWarn('浏览器不支持dataTransfer');
+        console.warn('your browser not support dataTransfer');
       }
-      this.$dragDropDataCenter.setData(e, this);
+      dataCenter.setData(e, this);
       e.stopPropagation();
     });
   }
