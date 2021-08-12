@@ -9,7 +9,7 @@ export default defineComponent({
   name: 'DragDrop',
   setup() {
     const dropListScopedSlot = {
-      item: (props: any) => h('div', JSON.stringify(props.itemData))
+      item: (props: any) => <div class="p-2 border-b border-gray-200">{JSON.stringify(props.itemData)}</div>
     };
     const dragItemIpts = [
       {
@@ -41,18 +41,18 @@ export default defineComponent({
       allowDrag: () => idx === 0,
       data,
       key: idx
-    }, () => <div>{data.dataKey}</div>));
+    }, () => <div class="p-2 border-gray-200 border">{data.dataKey}</div>));
 
     const definition = reactive({
       name: 'test',
       fields: []
     });
     return () => (
-      <div class="grid grid-cols-3 gap-2 p-4 h-screen">
-        <DropList v-slots={dropListScopedSlot} v-model={[definition.fields, 'modelValue']} />
+      <div class="grid grid-cols-2 gap-2 p-4 h-screen">
         <DragList>
           {dragItems}
         </DragList>
+        <DropList v-slots={dropListScopedSlot} v-model={[definition.fields, 'modelValue']} />
       </div>
     );
   }
