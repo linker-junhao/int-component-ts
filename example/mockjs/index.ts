@@ -12,37 +12,37 @@ Mock.mock('/proxy-config', 'get', {
     total: 10,
     list: [
       {
-        serverName: 'dev.boss.xtadmins.com',
+        serverName: 'dev.boss.xt233.com',
         listen: '80',
         location: '^~ /crm',
         proxyPass: 'http://192.168.0.228:10360'
       },
       {
-        serverName: 'dev.boss.xtadmins.com',
+        serverName: 'dev.boss.xt233.com',
         listen: '80',
         location: '^~ /crm',
         proxyPass: 'http://192.168.0.228:10360'
       },
       {
-        serverName: 'dev.boss.xtadmins.com',
+        serverName: 'dev.boss.xt233.com',
         listen: '80',
         location: '^~ /crm',
         proxyPass: 'http://192.168.0.228:10360'
       },
       {
-        serverName: 'dev.boss.xtadmins.com',
+        serverName: 'dev.boss.xt233.com',
         listen: '80',
         location: '^~ /crm',
         proxyPass: 'http://192.168.0.228:10360'
       },
       {
-        serverName: 'dev.boss.xtadmins.com',
+        serverName: 'dev.boss.xt233.com',
         listen: '80',
         location: '^~ /crm',
         proxyPass: 'http://192.168.0.228:10360'
       },
       {
-        serverName: 'dev.boss.xtadmins.com',
+        serverName: 'dev.boss.xt233.com',
         listen: '80',
         location: '^~ /crm',
         proxyPass: 'http://192.168.0.228:10360'
